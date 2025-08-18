@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monthly Machine Availability (Calendar)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Monthly Machine Availability (Calendar)</h2>
+
+  <div style="margin-bottom: 8px;">
+    <button id="prevMonthBtn">&lt;</button>
+    <span id="calendarMonth" style="font-weight: bold; color: #287233; font-size: 1.15em; margin: 0 20px;"></span>
+    <button id="nextMonthBtn">&gt;</button>
+  </div>
+
+  <div id="calendar-table-container" style="margin-bottom: 25px;"></div>
+
+  <form id="booking-form" autocomplete="off" style="margin-bottom: 30px; border: 1px solid #bbb; border-radius: 7px; padding: 14px; max-width: 950px;">
+    <h3>Book Machines</h3>
+    <div style="margin-bottom: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+      <label for="name" style="flex: 0 0 auto;">Name:</label>
+      <input type="text" id="name" name="name" required style="flex: 1 1 150px; min-width: 150px;">
+
+      <label for="department" style="flex: 0 0 auto;">Department:</label>
+      <select id="department" name="department" required style="flex: 1 1 150px; min-width: 150px;">
+        <option value="">Select Department</option>
+        <option value="Drive">Drive</option>
+        <option value="HSA">HSA</option>
+        <option value="Slider">Slider</option>
+      </select>
+
+      <label for="building" style="flex: 0 0 auto;">Building:</label>
+      <input type="text" id="building" name="building" required style="flex: 1 1 150px; min-width: 150px;">
+
+      <label for="date" style="flex: 0 0 auto;">Date:</label>
+      <input type="date" id="date" name="date" required style="flex: 1 1 150px; min-width: 150px;">
+    </div>
+
+    <div style="margin-bottom: 12px;">
+      <label for="remark">Remark (optional):</label><br />
+      <textarea id="remark" name="remark" rows="2" style="width: 100%; max-width: 850px; resize: vertical;" placeholder="Add any remarks here..."></textarea>
+    </div>
+
+    <div style="margin-bottom: 6px;">
+      <b>Machines to Book:</b>
+      <button type="button" id="add-book-row" style="margin-left:10px;">Add Row</button>
+    </div>
+    <div id="multi-book-list" style="margin-bottom: 10px;"></div>
+    <div id="form-message" style="font-weight: bold; min-height: 20px;"></div>
+    <button type="submit">Book</button>
+  </form>
+
+  <div>
+    <h3>Booking List</h3>
+
+    <!-- Filter Controls -->
+    <div style="margin-bottom: 10px;">
+      <label for="filter-machine-type">Filter by Machine Type:</label>
+      <select id="filter-machine-type">
+        <option value="">All</option>
+        <option value="Air Sampling">Air Sampling</option>
+        <option value="Ionic Sampling">Ionic Sampling</option>
+      </select>
+
+      <label for="filter-shift" style="margin-left: 12px;">Filter by Shift:</label>
+      <select id="filter-shift">
+        <option value="">All</option>
+        <option value="Day">Day</option>
+        <option value="Night">Night</option>
+      </select>
+
+      <label for="filter-date" style="margin-left: 12px;">Filter by Date:</label>
+      <input type="date" id="filter-date" />
+
+      <label for="filter-department" style="margin-left: 12px;">Filter by Department:</label>
+      <select id="filter-department">
+        <option value="">All</option>
+        <option value="Drive">Drive</option>
+        <option value="HSA">HSA</option>
+        <option value="Slider">Slider</option>
+      </select>
+
+      <label for="filter-booking-type" style="margin-left: 12px;">Filter by Booking Type:</label>
+      <select id="filter-booking-type">
+        <option value="">All</option>
+        <option value="Routine">Routine</option>
+        <option value="Special">Special</option>
+      </select>
+    </div>
+
+    <table id="booking-list-table" style="border-collapse: collapse; min-width: 700px;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Building</th>
+          <th>Machine Type</th>
+          <th>Shift</th>
+          <th>Date</th>
+          <th>Count</th>
+          <th>Type</th>
+          <th>Remark</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Booking rows inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 20px; font-size: 0.95em;">
+    <span style="color:#287233;">Air Sampling:</span> 3 per shift per day<br>
+    <span style="color:#c96a24;">Ionic Sampling:</span> 2 per shift per day
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
