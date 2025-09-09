@@ -1,4 +1,4 @@
-const MACHINE_LIMITS = { "Air Sampling":3, "Ionic Sampling":2 };
+const MACHINE_LIMITS = { "Air Sampling":4, "Ionic Sampling":2 };
 let bookings = [];
 let calendarYear, calendarMonth;
 let currentFilters = { machineType:"", shift:"", date:"", department:"", bookingType:"" };
